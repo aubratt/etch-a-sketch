@@ -1,8 +1,9 @@
 body {
     display: flex;
     align-items: center;
-    background-color: #121212;
+    background-color: #181818;
     color: white;
+    font-family: monospace;
     height: 100vh;
     margin: 0;
 }
@@ -10,13 +11,18 @@ body {
 #etch-a-sketch {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    background-color: #1e1e1e;
+    gap: 28px;
+    background-color: #212121;
     border-radius: 15px;
     width: 704px;
     height: 704px;
     margin: auto;
+}
+
+h1 {
+    margin: 0;
 }
 
 #grid {
@@ -28,15 +34,51 @@ body {
 }
 
 #options {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    background-color: #424242;
+    border-radius: 5px;
     width: 512px;
+    padding: 16px;
 }
 
-#squares-select {
+#options-left {
     display: flex;
+    gap: 16px;
+}
+
+button {
+    cursor: pointer;
+    width: 55px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+.squares-btn {
+    background-color: deepskyblue;
+    font-weight: bold;
+}
+
+#eight {
+    background-color: deepskyblue;
+}
+
+#sixteen {
+    background-color: deepskyblue;
+}
+
+#thirty-two {
+    background-color: deepskyblue;
+}
+
+#sixty-four {
+    background-color: deepskyblue;
 }
 
 #clear-btn {
-    display: flex;
+    background-color: red;
+    font-weight: bold;
 }
