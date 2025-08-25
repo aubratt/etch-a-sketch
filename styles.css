@@ -62,7 +62,18 @@ h1 {
     padding: 1rem;
 }
 
-#options-left {
+.black {
+    background-color: black;
+    color: white;
+}
+
+.rainbow {
+    background: linear-gradient(to right, red, yellow, lime, deepskyblue, violet);
+    background-color: none;
+    color: black;
+}
+
+#options-center {
     display: flex;
     gap: 1rem;
 }

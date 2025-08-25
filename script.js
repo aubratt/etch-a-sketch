@@ -17,9 +17,9 @@ function loadGrid(squareCount, squareSize) {
         square.style.width = squareSize;
         square.style.height = squareSize;
         grid.appendChild(square);
-        square.addEventListener("mouseover", function() {
+        square.addEventListener("mouseover", function () {
             square.style.backgroundColor = "black";
-        })
+        });
     }
 }
 
@@ -28,6 +28,33 @@ function changeSelectedButton(clickedSquaresBtn) {
     previousSelected.classList.remove("selected");
 
     clickedSquaresBtn.classList.add("selected");
+}
+
+function changeColorMode(modeBtn) {
+    const squares = document.querySelectorAll(".square");
+
+    if (modeBtn.className === "black") {
+        modeBtn.classList = "rainbow";
+
+        squares.forEach((square) => {
+            square.addEventListener("mouseover", function () {
+                square.style.backgroundColor = `rgb(${generateRandomNumber()}, ${generateRandomNumber()}, ${generateRandomNumber()})`;
+            });
+        });
+    } else {
+        modeBtn.classList = "black";
+
+        squares.forEach((square) => {
+            square.addEventListener("mouseover", function () {
+                square.style.backgroundColor = "black";
+            });
+        });
+    }
+}
+
+function generateRandomNumber() {
+    const randomNumber = Math.floor(Math.random() * 255);
+    return randomNumber;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -57,5 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
             loadGrid(squareCount, squareSize);
             changeSelectedButton(event.target);
         });
+    });
+
+    document.getElementById("mode-btn").addEventListener("click", function (event) {
+        changeColorMode(event.target);
     });
 });
