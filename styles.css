@@ -77,7 +77,7 @@ button {
     font-weight: bold;
 }
 
-.selected {
+.selected.squares-btn {
     background-color: lime;
 }
 
