@@ -55,26 +55,14 @@ button {
     border: none;
     border-radius: 5px;
     font-family: monospace;
-}
-
-.squares-btn {
-    background-color: deepskyblue;
     font-weight: bold;
 }
 
-#eight {
-    background-color: deepskyblue;
+.selected {
+    background-color: lime;
 }
 
-#sixteen {
-    background-color: deepskyblue;
-}
-
-#thirty-two {
-    background-color: deepskyblue;
-}
-
-#sixty-four {
+.squares-btn {
     background-color: deepskyblue;
 }
 
