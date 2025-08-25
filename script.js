@@ -3,6 +3,7 @@ function loadGrid(numberOfSquares) {
 
     for (let i = 0; i < numberOfSquares; i++) {
         const square = document.createElement("div");
+        square.className = "square";
         square.style.boxSizing = "border-box";
         square.style.backgroundColor = "white";
         square.style.border = "0.5px solid rgb(0, 0, 0, 0.15)";
@@ -15,4 +16,10 @@ function loadGrid(numberOfSquares) {
 document.addEventListener("DOMContentLoaded", function () {
     const defaultNumberOfSquares = 16 * 16;
     loadGrid(defaultNumberOfSquares);
+
+    document.querySelectorAll(".square").forEach((square) => {
+        square.addEventListener("mouseover", function() {
+            square.style.backgroundColor = "black";
+        });
+    });
 });
