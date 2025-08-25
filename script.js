@@ -17,8 +17,8 @@ function loadGrid(squareCount, squareSize) {
         square.style.width = squareSize;
         square.style.height = squareSize;
         grid.appendChild(square);
-        square.addEventListener("mouseover", function () {
-            square.style.backgroundColor = "black";
+        square.addEventListener("mouseover", function (event) {
+            darkenSquare(event.target, getCurrentColorMode());
         });
     }
 }
@@ -37,16 +37,16 @@ function changeColorMode(modeBtn) {
         modeBtn.classList = "rainbow";
 
         squares.forEach((square) => {
-            square.addEventListener("mouseover", function () {
-                square.style.backgroundColor = `rgb(${generateRandomNumber()}, ${generateRandomNumber()}, ${generateRandomNumber()})`;
+            square.addEventListener("mouseover", function (event) {
+                darkenSquare(event.target, getCurrentColorMode());
             });
         });
     } else {
         modeBtn.classList = "black";
 
         squares.forEach((square) => {
-            square.addEventListener("mouseover", function () {
-                square.style.backgroundColor = "black";
+            square.addEventListener("mouseover", function (event) {
+                darkenSquare(event.target, getCurrentColorMode());
             });
         });
     }
@@ -55,6 +55,33 @@ function changeColorMode(modeBtn) {
 function generateRandomNumber() {
     const randomNumber = Math.floor(Math.random() * 255);
     return randomNumber;
+}
+
+function darkenSquare(square, colorMode) {
+    const currentBgColor = window.getComputedStyle(square).backgroundColor;
+
+    console.log(colorMode);
+
+    if (currentBgColor === "rgb(255, 255, 255)") {
+        if (colorMode === "black") {
+            square.style.backgroundColor = "rgb(0, 0, 0)";
+            square.style.opacity = "0.1";
+        } else {
+            square.style.backgroundColor = `rgb(${generateRandomNumber()}, ${generateRandomNumber()}, ${generateRandomNumber()})`;
+            square.style.opacity = "0.1";
+        }
+    } else {
+        const currentOpacity = parseFloat(window.getComputedStyle(square).opacity);
+        console.log(currentOpacity);
+        square.style.opacity = currentOpacity + 0.1;
+    }
+}
+
+function getCurrentColorMode() {
+    const modeBtn = document.getElementById("mode-btn");
+    const currentColorMode = modeBtn.className;
+
+    return currentColorMode;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
