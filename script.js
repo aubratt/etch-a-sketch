@@ -13,7 +13,7 @@ function loadGrid(squareCount, squareSize) {
         square.className = "square";
         square.style.boxSizing = "border-box";
         square.style.backgroundColor = "white";
-        square.style.border = "1px solid rgb(0, 0, 0, 0.15)";
+        square.style.border = "1px solid rgb(0, 0, 0, 0.05)";
         square.style.width = squareSize;
         square.style.height = squareSize;
         grid.appendChild(square);
@@ -60,8 +60,6 @@ function generateRandomNumber() {
 function darkenSquare(square, colorMode) {
     const currentBgColor = window.getComputedStyle(square).backgroundColor;
 
-    console.log(colorMode);
-
     if (currentBgColor === "rgb(255, 255, 255)") {
         if (colorMode === "black") {
             square.style.backgroundColor = "rgb(0, 0, 0)";
@@ -72,7 +70,6 @@ function darkenSquare(square, colorMode) {
         }
     } else {
         const currentOpacity = parseFloat(window.getComputedStyle(square).opacity);
-        console.log(currentOpacity);
         square.style.opacity = currentOpacity + 0.1;
     }
 }
@@ -115,5 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("mode-btn").addEventListener("click", function (event) {
         changeColorMode(event.target);
+    });
+
+    document.getElementById("clear-btn").addEventListener("click", function() {
+        document.querySelectorAll(".square").forEach((square) => {
+            square.style.backgroundColor = "white";
+            square.style.opacity = "1";
+        });
     });
 });
